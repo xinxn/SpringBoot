@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"   xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+   <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+</head>
+<body>
+
+    <tr  th:each="array : ${session.array}" >
+          <td><h1  th:text="${array}">圣诞节</h1></td>
+     </tr>
+
+
+    <a th:href="@{/login}">返回上一页</a>
+
+    <input type="button" id="testBtn" value="测试按钮" onclick="sentAjax();"/><br>
+    <script type="text/javascript">
+        function sentAjax(){
+            $.ajax({
+                type: 'POST',
+                url:"/ajax",
+                data:{"name":"JSON","address":"北京市西城区","age":25},
+                dataType : "json",
+                success: function(result){
+                    console.log(result);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
